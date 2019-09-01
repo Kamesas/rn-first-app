@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Button, TextInput } from "react-native";
+import { View, StyleSheet, Button, TextInput, Keyboard } from "react-native";
 
 const GoalInput = ({ setCoursGoals }) => {
   const [enteredGoal, setEnteredGoal] = useState("");
@@ -15,6 +15,11 @@ const GoalInput = ({ setCoursGoals }) => {
         { key: Math.random().toString(), value: enteredGoal }
       ]);
     setEnteredGoal("");
+    Keyboard.dismiss();
+  };
+
+  handleSubmit = () => {
+    addGoal();
   };
 
   return (
@@ -24,6 +29,7 @@ const GoalInput = ({ setCoursGoals }) => {
         style={styles.textInputStyle}
         value={enteredGoal}
         onChangeText={handleChangeInputGoal}
+        onSubmitEditing={handleSubmit}
       />
       <Button title="Add" style={styles.addButton} onPress={addGoal} />
     </View>
