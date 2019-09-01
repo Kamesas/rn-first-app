@@ -1,7 +1,14 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Button, TextInput, Keyboard } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Button,
+  TextInput,
+  Keyboard,
+  Modal
+} from "react-native";
 
-const GoalInput = ({ setCoursGoals }) => {
+const GoalInput = ({ setCoursGoals, isAddMode, setIsAddMode }) => {
   const [enteredGoal, setEnteredGoal] = useState("");
 
   handleChangeInputGoal = e => {
@@ -16,23 +23,32 @@ const GoalInput = ({ setCoursGoals }) => {
       ]);
     setEnteredGoal("");
     Keyboard.dismiss();
+    setIsAddMode(false);
   };
 
   handleSubmit = () => {
     addGoal();
+    setIsAddMode(false);
   };
 
   return (
-    <View style={styles.addFormWrapper}>
-      <TextInput
-        placeholder="Enter todo"
-        style={styles.textInputStyle}
-        value={enteredGoal}
-        onChangeText={handleChangeInputGoal}
-        onSubmitEditing={handleSubmit}
-      />
-      <Button title="Add" style={styles.addButton} onPress={addGoal} />
-    </View>
+    <Modal visible={isAddMode} animationType={"slide"}>
+      <View style={styles.addFormWrapper}>
+        <TextInput
+          placeholder="Enter todo"
+          style={styles.textInputStyle}
+          value={enteredGoal}
+          onChangeText={handleChangeInputGoal}
+          onSubmitEditing={handleSubmit}
+        />
+        <Button
+          title="Add"
+          style={styles.addButton}
+          color="#aaa"
+          onPress={addGoal}
+        />
+      </View>
+    </Modal>
   );
 };
 
@@ -40,20 +56,24 @@ export default GoalInput;
 
 const styles = StyleSheet.create({
   addFormWrapper: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    padding: 10,
+    backgroundColor: "rgba(0, 0, 0, .85)",
+    width: "100%"
   },
   textInputStyle: {
-    width: "80%",
-    borderColor: "#000",
+    width: "100%",
+    borderColor: "#aaa",
     borderWidth: 1,
     padding: 10,
-    marginBottom: 5
-    //flexGrow: 1
+    marginBottom: 10,
+    color: "#fff"
   },
   addButton: {
-    padding: 50,
-    backgroundColor: "#aaa"
+    padding: 10,
+    width: "50%"
   }
 });

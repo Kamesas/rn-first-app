@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, FlatList, AsyncStorage } from "react-native";
+import { StyleSheet, View, FlatList, Button } from "react-native";
 import GoalInput from "./components/GoalInput.js";
 import GoalItem from "./components/GoalItem.js";
 import {
@@ -9,6 +9,7 @@ import {
 
 export default function App() {
   const [courseGoals, setCoursGoals] = useState([]);
+  const [isAddMode, setIsAddMode] = useState(false);
 
   const removeGoalItem = id => {
     setCoursGoals(currGoals => {
@@ -26,7 +27,11 @@ export default function App() {
 
   return (
     <View style={styles.appWrapper}>
-      <GoalInput setCoursGoals={setCoursGoals} />
+      <GoalInput
+        setCoursGoals={setCoursGoals}
+        isAddMode={isAddMode}
+        setIsAddMode={setIsAddMode}
+      />
 
       <FlatList
         data={courseGoals}
@@ -34,6 +39,8 @@ export default function App() {
           <GoalItem itemData={item} onDelete={removeGoalItem} />
         )}
       ></FlatList>
+
+      <Button title="Add" onPress={() => setIsAddMode(true)} />
     </View>
   );
 }
@@ -41,6 +48,8 @@ export default function App() {
 const styles = StyleSheet.create({
   appWrapper: {
     padding: 20,
-    paddingVertical: 30
+    paddingVertical: 30,
+    width: "100%",
+    minHeight: "100%"
   }
 });
