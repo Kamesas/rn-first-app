@@ -1,7 +1,11 @@
-import React, { useState } from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, View, FlatList, AsyncStorage } from "react-native";
 import GoalInput from "./components/GoalInput.js";
 import GoalItem from "./components/GoalItem.js";
+import {
+  getDataFromStorage,
+  setDataFromStorage
+} from "./components/AsyncStorage.js";
 
 export default function App() {
   const [courseGoals, setCoursGoals] = useState([]);
@@ -11,6 +15,14 @@ export default function App() {
       return currGoals.filter(goal => goal.key !== id);
     });
   };
+
+  useEffect(() => {
+    getDataFromStorage(setCoursGoals, "tasks");
+  }, []);
+
+  useEffect(() => {
+    setDataFromStorage("tasks", courseGoals);
+  }, [courseGoals]);
 
   return (
     <View style={styles.appWrapper}>
