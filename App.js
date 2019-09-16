@@ -22,7 +22,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>yes</Text>
       <Header />
       <ScrollView>
         <View style={styles.cardContainer}>
