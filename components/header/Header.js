@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
   header: {
     color: "#fff",
     fontSize: 26,
-    letterSpacing: 3,
-    fontFamily: "AvenirNext-DemiBold"
+    letterSpacing: 3
   }
 });

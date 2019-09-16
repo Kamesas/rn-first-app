@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 import Header from "./components/header/Header";
 import ImageCard from "./components/ImageCard/ImageCard";
-import { height, width } from "./constants";
 
 export default function App() {
   const [movieList, setMovieList] = useState([]);
@@ -23,6 +22,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Text>yes</Text>
       <Header />
       <ScrollView>
         <View style={styles.cardContainer}>
@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     borderColor: "red",
-    borderWidth: 2
+    borderWidth: 2,
+    backgroundColor: "#fff"
   },
   cardContainer: {
     marginTop: 30,
