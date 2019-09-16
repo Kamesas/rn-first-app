@@ -1,21 +1,23 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, SafeAreaView, View } from "react-native";
 
 export default function Header() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Star Gate !</Text>
-    </View>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <Text style={styles.header}>Movie app!</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: 112,
+    height: 80,
     backgroundColor: "#000",
     justifyContent: "flex-end",
-    paddingBottom: 20,
     paddingLeft: 20,
+    paddingVertical: 10,
     shadowColor: "rgba(0, 0, 0, 0.75)",
     shadowOffset: { width: -1, height: 1 },
     shadowRadius: 10,

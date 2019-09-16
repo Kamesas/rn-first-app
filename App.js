@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import Header from "./components/header/Header";
 import ImageCard from "./components/ImageCard/ImageCard";
 
