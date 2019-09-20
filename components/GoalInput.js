@@ -11,11 +11,11 @@ import {
 const GoalInput = ({ setCoursGoals, isAddMode, setIsAddMode }) => {
   const [enteredGoal, setEnteredGoal] = useState("");
 
-  handleChangeInputGoal = e => {
+  const handleChangeInputGoal = e => {
     setEnteredGoal(e);
   };
 
-  addGoal = () => {
+  const addGoal = () => {
     enteredGoal.trim() !== "" &&
       setCoursGoals(prevGoals => [
         ...prevGoals,
@@ -26,7 +26,7 @@ const GoalInput = ({ setCoursGoals, isAddMode, setIsAddMode }) => {
     setIsAddMode(false);
   };
 
-  handleSubmit = () => {
+  const handleSubmit = () => {
     addGoal();
     setIsAddMode(false);
   };
